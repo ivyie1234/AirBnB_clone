@@ -9,9 +9,6 @@ class BaseModel:
     def __init__(self):
         self.id = str(uuid.uuid4())
 
-
-
-        refs/remotes/origin/master
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
 
@@ -44,10 +41,5 @@ if __name__ == "__main__":
     print(my_model_json)
     print("JSON Of my node:")
 
-    for key in my_model_json.key():
-        print("\t{}: ({} - {}".format(key, type(my_model_json[key]). my_model_json[key]))
-
     for key in my_model_json.keys():
-        print("\t{}: ({} - {})".format(key, type(my_model_json[key]), my_model_json[key]))
-
-
+        print("\t{}: ({} - {}".format(key, type(my_model_json[key]), my_model_json[key]))
