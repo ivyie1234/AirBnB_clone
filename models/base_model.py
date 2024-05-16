@@ -6,19 +6,18 @@ import uuid
 from datetime import datetime
 
 class BaseModel:
-    def __init__(self):
-         if kwargs:
-             for key, value in kwargs.items():
-                 if key != '__class__':
-                     if key in ['created_at', 'updated_at']:
-                         setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
-                     else:
-                         setattr(self, key, value)
+    def __init__(self, *args, **kwargs):
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key in ['created_at', 'updated_at']:
+                        setattr(self, key, datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f'))
+                    else:
+                        setattr(self, key, value)
         else:
-        self.id = str(uuid.uuid4())
-
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
 
     def save(self):
         self.updated_at = datetime.utcnow()
@@ -31,10 +30,6 @@ class BaseModel:
         return inst_dict
 
     def __str__(self):
-
-        """
-        """
-
         class_name = self.__class__.__name__
         return "[{}] [{}] {}".format(class_name, self.id, self.__dict__)
 
@@ -49,10 +44,6 @@ if __name__ == "__main__":
     print(my_model_json)
     print("JSON Of my node:")
 
-    for key in my_model_json.key():
-        print("\t{}: ({} - {}".format(key, type(my_model_json[key]). my_model_json[key]))
-
     for key in my_model_json.keys():
         print("\t{}: ({} - {})".format(key, type(my_model_json[key]), my_model_json[key]))
-
 
